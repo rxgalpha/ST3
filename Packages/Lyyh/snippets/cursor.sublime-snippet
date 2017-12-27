@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+	declare ${1:cur_gaqy} cursor for
+		select ${3:acctno,prodno}
+			from ${2:dsp_gaqy}
+	open ${1:cur_gaqy}
+	fetch ${1:cur_gaqy} into ${4:@acctno,@prodno}
+	if @@error <> 0 begin
+		select @erorcd = '91', @erortx = '获取游标${1:cur_gaqy}结果集失败'
+		goto err
+	end
+	while(@@sqlstatus = 0) begin
+		$5
+		fetch ${1:cur_gaqy} into ${4:@acctno,@prodno}
+		if @@error <> 0 begin
+			select @erorcd = '92', @erortx = '获取游标${1:cur_gaqy}结果集失败'
+			goto err
+		end
+	end
+	close ${1:cur_gaqy}
+	deallocate cursor ${1:cur_gaqy}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>cursor</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>

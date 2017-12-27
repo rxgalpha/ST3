@@ -1,0 +1,31 @@
+print '${1:proc_sub} 开始提交'
+if exists (select 1 from sysobjects where name = '${1:proc_sub}' and type = 'P')
+	drop procedure ${1:proc_sub}
+go
+create procedure ${1:proc_sub} --${2:子过程 参考 se_pc_checksysstatus}
+/*********************************************************************
+renxg created in ${date}
+测试:
+$3
+功能描述：$2
+*********************************************************************/
+$4
+as
+begin
+	declare @errtcd int,@prrtcd int
+	declare @erorcd u_erorcd,@erortx u_erortx,@erorsc u_erorsc	--出错码，出错信息，出错前台控制脚本
+	exec kn_pc_reg '${1:proc_sub}'
+	$0
+ok:
+	exec kg_js_returnsuccess
+	return 0
+err:
+	exec kg_js_reporterror '00', @erorcd, @erortx
+errsub:
+	exec kg_js_returnerror
+	return 1
+end
+go
+if @@error <> 0  print '${1:proc_sub} 提交错误'
+else  print '${1:proc_sub} 提交正确'
+go

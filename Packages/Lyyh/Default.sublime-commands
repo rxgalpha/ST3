@@ -1,0 +1,11 @@
+[
+    {
+        "caption": "Lyyh: Proc", "command": "proc"
+    },
+    {
+        "caption": "Lyyh: Date", "command": "date"
+    },
+    {
+        "caption": "Lyyh: Diff", "command": "diff"
+    }
+]

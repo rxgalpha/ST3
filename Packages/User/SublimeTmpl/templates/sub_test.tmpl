@@ -1,0 +1,28 @@
+if exists(select 1 from sysobjects where name = '${1:procname}_test' and type = 'P')
+	drop procedure ${1:procname}_test
+go
+create procedure ${1:procname}_test
+as
+begin
+	declare @prrtcd int,@errtcd int,@systdt char(8)
+	exec kg_js_reset
+	exec kg_js_setstring 'pstack','1' --为 kg_js_getcallstack 设置
+	exec kn_pc_getsysdate @systdt output
+	-- 测试日终程序可删除以下2行
+	exec kg_js_inputdata 'servtp=CNT|brchno=9901|userid=M1111|prcscd=xxxxxx'
+	exec kg_js_setstring 'systdt',@systdt
+	${2}
+	begin tran
+		exec @prrtcd = ${1:procname}
+		exec @errtcd = kn_yc_reportsyserror @@error, '${1:procname}'
+		if @errtcd != 0 or @prrtcd != 0
+			select kg_js_geterrormsg(), kg_js_geterrorno(), kg_js_getcallstack()
+		else
+			exec kg_js_returnsuccess
+		${0:--执行后验证结果}
+	rollback
+	return
+end
+go
+exec ${1:procname}_test
+go

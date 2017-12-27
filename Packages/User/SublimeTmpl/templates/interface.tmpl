@@ -1,0 +1,4 @@
+begin tran
+exec kg_js_reset
+exec kg_ti_interface '${1:pckgda}'
+rollback

@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+if @@error <> 0 or @@rowcount <> 1 begin
+	select @erorcd = '${1:46}',@erortx = '${2:更新起息日，积数，积数日期异常}'
+	goto err
+end
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>iferr</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>

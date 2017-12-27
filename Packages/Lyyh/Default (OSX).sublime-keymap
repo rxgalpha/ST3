@@ -1,0 +1,5 @@
+[
+    { 
+        "keys": ["cmd+ctrl+x"], "command": "prefixr"
+    }
+]

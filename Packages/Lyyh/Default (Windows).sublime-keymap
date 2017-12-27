@@ -1,0 +1,16 @@
+[
+    {"keys": ["alt+r"], "command": "proc", "args": {"lyormj": "ly"}},
+    {"keys": ["alt+shift+r"], "command": "proc", "args": {"lyormj": "mj"}},
+    {"keys": ["alt+shift+l"], "command": "proc_by_prcs", "args": {"lyormj": "ly"}},
+    {"keys": ["alt+shift+m"], "command": "proc_by_prcs", "args": {"lyormj": "mj"}},
+    {"keys": ["alt+t"], "command": "gent"},
+    // {"keys": ["alt+d"], "command": "dict"},
+    {"keys": ["alt+c"], "command": "find_declare"},
+    {"keys": ["alt+f"], "command": "diff", "args": {"lyormj": "ly"}},
+    {"keys": ["alt+shift+f"], "command": "diff", "args": {"lyormj": "mj"}},
+    {"keys": ["alt+s"], "command": "switchdb"},
+    {"keys": ["alt+d"], "command": "dtit"},
+    {"keys": ["alt+e"], "command": "item"},
+    {"keys": ["alt+q"], "command": "datatype"},
+    {"keys": ["alt+shift+b"], "command": "del_backslash"}
+]

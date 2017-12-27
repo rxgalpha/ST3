@@ -1,0 +1,28 @@
+print '${1:tabna}_trigger 开始提交!'
+go
+if exists (select 1 from sysobjects where name = '${1:tabna}_trigger' and type = 'TR')
+    drop trigger  ${1:tabna}_trigger
+go
+create trigger ${1:tabna}_trigger
+	on ${1:tabna}
+	for insert,update,delete
+as
+begin
+	declare @procname varchar(30),@max_error int
+	select @procname = name from sysobjects where id = @@procid
+	if exists(select 1 from deleted) begin
+		select @procname,'${1:tabna}-',* from deleted
+	end
+	if exists(select 1 from inserted) begin
+		select @procname,'${1:tabna}+',* from inserted
+	end
+end
+go
+if @@error <> 0
+    print '${1:tabna}_trigger 提交错误!'
+else
+    print '${1:tabna}_trigger 提交正确!'
+go
+
+-- alter table ${1:tabna} disable trigger ${1:tabna}_trigger
+-- alter table ${1:tabna} enable trigger ${1:tabna}_trigger

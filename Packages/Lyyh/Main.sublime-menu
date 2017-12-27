@@ -1,0 +1,25 @@
+[
+    {
+        "id": "edit",
+        "children":
+        [
+            {
+                "caption": "Lyyh",
+                "children":
+                [
+                    {
+                        "caption": "Proc",
+                        "command": "proc",
+                        "args": {
+                            // "type": "html"
+                        }
+                    },
+                    {
+                        "caption": "Date",
+                        "command": "date"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+exec @prrtcd = ${1:kd_dc_checkdocumentpswd} ${2:@dcmtno, @dcmttp, @tranpw}
+exec @errtcd = kn_yc_reportsyserror @@error,'${1:kd_dc_checkdocumentpswd}'
+if @errtcd != 0 or @prrtcd != 0 goto errsub
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>execsub</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>

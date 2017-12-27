@@ -1,0 +1,19 @@
+{
+	"proc_test": {
+        "syntax": "Packages/SQL/SQL.tmLanguage"
+    },
+    "proc_main": {
+        "syntax": "Packages/SQL/SQL.tmLanguage"
+    },
+    "proc_sub": {
+        "syntax": "Packages/SQL/SQL.tmLanguage"
+    },
+    "sub_test": {
+        "syntax": "Packages/SQL/SQL.tmLanguage"
+    },
+    "attr": {
+        "author": "ren xuguang" ,
+        "email": "rxgalpha@gmail.com",
+        "link": "http://example.org"
+    }
+}

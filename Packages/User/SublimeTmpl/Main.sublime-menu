@@ -1,0 +1,59 @@
+[
+    {
+        "id": "file",
+        "children":
+        [
+            {
+            		"id": "sublimetmpl",
+                "caption": "New File (SublimeTmpl)",
+                "children":
+                [
+                    {
+                    		"id": "proc_main",
+                        "caption": "proc_main",
+                        "command": "sublime_tmpl",
+                        "args": {
+                            "type": "proc_main"
+                        }
+                    },
+                    {
+                    		"id": "proc_sub",
+                        "caption": "proc_sub",
+                        "command": "sublime_tmpl",
+                        "args": {
+                            "type": "proc_sub"
+                        }
+                    },
+                    {
+                        "caption": "sub_test",
+                        "command": "sublime_tmpl",
+                        "args": {
+                            "type": "sub_test"
+                        }
+                    },
+                    {
+                        "caption": "interface",
+                        "command": "sublime_tmpl",
+                        "args": {
+                            "type": "interface"
+                        }
+                    },
+                    {
+                        "caption": "接口文档",
+                        "command": "sublime_tmpl",
+                        "args": {
+                            "type": "接口文档"
+                        }
+                    },
+                    {
+                        "caption": "trigger",
+                        "command": "sublime_tmpl",
+                        "args": {
+                            "type": "trigger"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

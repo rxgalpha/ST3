@@ -1,0 +1,6 @@
+{
+	"shell_cmd": "isql -Usa -Ppassword -S5100 -i$file",
+	//"shell_cmd": "isql -Usa -P -S2100 -i$file",
+	"file_regex": "^(...*?):([0-9]*):?([0-9]*)",
+	"selector": "source.sql",
+}

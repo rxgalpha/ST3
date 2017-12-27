@@ -1,0 +1,52 @@
+print '${1:proc_main} 开始提交'
+if exists (select 1 from sysobjects where name = '${1:proc_main}' and type = 'P')
+	drop procedure ${1:proc_main}
+go
+create procedure ${1:proc_main} --${2:主过程 参考 sd_tb_sendpaybankdraft}
+/*********************************************************************
+renxg created in ${date}
+测试:
+brchno=9901|userid=M1111|prcscd=$5
+功能描述: $2
+处理码: $5
+*********************************************************************/
+as
+begin
+	declare @errtcd int,@prrtcd int
+	declare @erorcd u_erorcd,@erortx u_erortx,@erorsc u_erorsc	--出错码，出错信息，出错前台控制脚本
+	exec kn_pc_reg '${1:proc_main}'
+	declare @servtp u_servtp,
+		$6
+
+	select @servtp = ltrim(kg_js_getstring('servtp'))
+	$0
+
+	begin tran
+
+ok:
+	-- declare @cnfmsq u_seqnce		--确认流水
+	-- exec @prrtcd = ku_uc_permprcsbeforecommit @cnfmsq out --提交前权限处理
+	-- exec @errtcd = kn_yc_reportsyserror  @@error, 'ku_uc_permprcsbeforecommit'
+	-- if @errtcd != 0 or @prrtcd != 0
+	-- 	goto errsub
+	exec kg_js_returnsuccess
+	select 'pckgsq','erortx'
+	select null, null
+	if @@trancount >0
+		commit
+	return 0
+err:
+	exec kg_js_reporterror '00', @erorcd, @erortx
+errsub:
+	if @@trancount > 0
+		rollback tran
+	select 'pckgsq','erortx'
+	select kg_js_getstring('pckgsq'),kg_js_geterrormsg()
+	exec kg_js_returnerror
+	return 1
+end
+go
+if @@error <> 0  print '${1:proc_main} 提交错误'
+else  print '${1:proc_main} 提交正确'
+go
+
