@@ -7,12 +7,13 @@ import codecs
 
 basedir = 'D:/lyyh/'
 DSN = "DSN=8100ceshi;PWD=qz8100"
-DB_LIST=["LyVsMj","cbly220.1","1100","5100","2100","mjmf_4201","mjceshi","mjcs80","8100ceshi","7100","7500","szceshi","szbs_4101","cbly220.4"]
+DB_LIST=["LyVsMj","cbly220.1","1100","5100","2100","mjmf_4201","mjceshi","mjcs80","8100ceshi","7100","7500","szceshi","szbs_4101","cbly220.4","nianzhong"]
 DSN_MAP={
 	"8100":"DSN=8100ceshi;PWD=qz8100",
 	"2100":"DSN=2100",
 	"5100":"DSN=5100;PWD=5100cs",
-	"cbly220.1":"DSN=cbly220.1;PWD=cbly2015"
+	"cbly220.1":"DSN=cbly220.1;PWD=cbly2015",
+	"nianzhong":"DSN=nianzhong;PWD=888888"
 }
 # dir(DSN_MAP.keys())
 # print(DSN_MAP.keys())
